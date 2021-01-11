@@ -117,6 +117,8 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:id="@+id/et_location"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:textSize="@dimen/edit_text_text_size"
         android:textColorHint="@color/secondary_text_color"
         android:textColor="@color/primary_text_color"
