@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
 
-        <!--TODO (Step 7 : Modify the activity manifest details as per our requirement. Here we have created the Style in style.xml for NoActionBar.)-->
         <!--START-->
         <activity
             android:name=".AddHappyPlaceActivity"

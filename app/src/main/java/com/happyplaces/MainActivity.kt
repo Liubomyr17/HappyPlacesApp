@@ -1,7 +1,9 @@
 package com.happyplaces
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,5 +16,10 @@ class MainActivity : AppCompatActivity() {
 
         // This is used to align the xml view to this class
         setContentView(R.layout.activity_main)
+
+        fabAddHappyPlace.setOnClickListener {
+            val intent = Intent(this, AddHappyPlaceActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

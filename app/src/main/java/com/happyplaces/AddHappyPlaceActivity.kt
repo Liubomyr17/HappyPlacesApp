@@ -2,8 +2,8 @@ package com.happyplaces
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_add_happy_place.*
 
-// TODO(Step 6 : Add an activity for Add Happy Place.)
 // START
 class AddHappyPlaceActivity : AppCompatActivity() {
 
@@ -16,6 +16,11 @@ class AddHappyPlaceActivity : AppCompatActivity() {
 
         // This is used to align the xml view to this class
         setContentView(R.layout.activity_add_happy_place)
+        setSupportActionBar(toolbar_add_place)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar_add_place.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 }
 // END

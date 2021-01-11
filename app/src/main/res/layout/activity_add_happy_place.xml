@@ -1,24 +1,183 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--TODO (Step 9: Here we have added a toolbar in the add happy place screen using ConstraintLayout.)-->
-<!--START-->
-<!--Here we have done list of things.
-     1. We designed the toolbar using the custom theme.-->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+    tools:context=".AddHappyPlaceActivity"
     android:layout_height="match_parent"
-    tools:context=".AddHappyPlaceActivity">
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_add_place"
-        android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:theme="@style/CustomToolbarStyle"
         app:layout_constraintTop_toTopOf="parent"
-        android:theme="@style/CustomToolbarStyle"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar_add_place"/>
+
+    <!--START-->
+
+    <!--Here we have done list of things.1. We designed the view as per our requirement and with required components.2. We have added some of the custom background drawables in the drawable folder.3. We have added an place holder image in the drawable folder to use it in the image view.4. We have added all the constant values in the respective file as dimen values are added in dimen.xml and both String and Color values are added in the color.xml and string.xml-->
+
+    <ScrollView
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/sv_main"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_add_place"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:fillViewport="true">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="@dimen/main_content_padding">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/til_title"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/et_title"
+        android:textSize="@dimen/edit_text_text_size"
+        android:textColorHint="@color/secondary_text_color"
+        android:textColor="@color/primary_text_color"
+        android:inputType="textCapWords"
+        android:hint="@string/edit_text_hint_title"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/til_description"
+        app:layout_constraintTop_toBottomOf="@+id/til_title"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/add_screen_til_marginTop">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/et_description"
+        android:textSize="@dimen/edit_text_text_size"
+        android:textColorHint="@color/secondary_text_color"
+        android:textColor="@color/primary_text_color"
+        android:inputType="textCapSentences"
+        android:hint="@string/edit_text_hint_description"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/til_date"
+        app:layout_constraintTop_toBottomOf="@+id/til_description"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/add_screen_til_marginTop">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/et_date"
+        android:textSize="@dimen/edit_text_text_size"
+        android:textColorHint="@color/secondary_text_color"
+        android:textColor="@color/primary_text_color"
+        android:inputType="text"
+        android:hint="@string/edit_text_hint_date"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/til_location"
+        app:layout_constraintTop_toBottomOf="@+id/til_date"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/add_screen_til_marginTop">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/et_location"
+        android:textSize="@dimen/edit_text_text_size"
+        android:textColorHint="@color/secondary_text_color"
+        android:textColor="@color/primary_text_color"
+        android:inputType="text"
+        android:hint="@string/edit_text_hint_location"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_height="@dimen/add_screen_place_image_size"
+        android:layout_width="@dimen/add_screen_place_image_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/shape_image_view_border"
+        android:id="@+id/iv_place_image"
+        app:layout_constraintTop_toBottomOf="@+id/til_location"
+        android:padding="@dimen/add_screen_place_image_padding"
+        android:layout_marginTop="@dimen/add_screen_place_image_marginTop"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:src="@drawable/add_screen_image_placeholder"
+        android:scaleType="centerCrop"/>
+
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="?attr/selectableItemBackground"
+        android:id="@+id/tv_add_image"
+        app:layout_constraintTop_toBottomOf="@+id/til_location"
+        android:padding="@dimen/add_screen_text_add_image_padding"
+        android:textSize="@dimen/add_screen_text_add_image_textSize"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="@dimen/add_screen_text_add_image_marginTop"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintVertical_bias="0.019"
+        app:layout_constraintStart_toEndOf="@+id/iv_place_image"
+        app:layout_constraintBottom_toTopOf="@+id/btn_save"
+        android:textStyle="bold"
+        android:text="@string/text_add_image"
+        android:gravity="center"/>
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/shape_button_rounded"
+        android:id="@+id/btn_save"
+        app:layout_constraintTop_toBottomOf="@+id/iv_place_image"
+        android:textSize="@dimen/btn_text_size"
+        android:textColor="@color/white_color"
+        android:layout_marginTop="@dimen/add_screen_btn_save_marginTop"
+        android:text="@string/btn_text_save"
+        android:gravity="center"
+        android:paddingBottom="@dimen/add_screen_btn_save_paddingTopBottom"
+        android:paddingTop="@dimen/add_screen_btn_save_paddingTopBottom"
+        android:layout_gravity="center"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+
     <!--END-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
