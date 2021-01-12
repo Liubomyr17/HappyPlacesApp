@@ -1,9 +1,16 @@
 package com.happyplaces
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import kotlinx.android.synthetic.main.activity_add_happy_place.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -36,6 +43,7 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
             updateDateInView()
         }
         et_date.setOnClickListener(this)
+        tv_add_image.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -48,8 +56,38 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
                     cal.get(Calendar.MONTH),
                     cal.get(Calendar.DAY_OF_MONTH)).show()
             }
+            R.id.iv_place_image -> {
+                val pictureDialog = AlertDialog.Builder(this)
+                pictureDialog.setTitle("Select Action")
+                val pictureDialogItems = arrayOf("Select photo from Gallery",
+                "Capture photo from camera")
+                pictureDialog.setItems(pictureDialogItems) {
+                    dialog, which ->
+                    when(which) {
+                        0 -> choosePhotoFromGallery()
+                    1 -> Toast.makeText(this@AddHappyPlaceActivity,
+                    "Camera selection coming soon...",
+                    Toast.LENGTH_SHORT).show()
+                    }
+                }
+                pictureDialog.show()
+            }
         }
     }
+    private fun choosePhotoFromGallery() {
+        Dexter.withActivity(this).withPermission(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ).withListener(object: MultiplePermissionsListener {
+            override fun onPermissionsChecked(report: MultiplePermissionsReport) {/* ... */
+            }
+            override fun onPermissionRationaleShouldBeShown(permissions:
+                List<PermissionRequest> , token: PermissionToken
+            ) {/* ... */
+            }
+        }).check()
+    }
+
     private fun updateDateInView() {
         val myFormat = "dd.MM.yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.getDefault())
