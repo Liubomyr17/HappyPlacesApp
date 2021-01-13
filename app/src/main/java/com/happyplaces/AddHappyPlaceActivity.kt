@@ -105,23 +105,13 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    /**
-     * A function to update the selected date in the UI with selected format.
-     * This function is created because every time we don't need to add format which we have added here to show it in the UI.
-     */
     private fun updateDateInView() {
         val myFormat = "dd.MM.yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.getDefault()) // A date format
         et_date.setText(sdf.format(cal.time).toString()) // A selected date using format which we have used is set to the UI.
     }
 
-    // TODO (Step 3 : Creating a method for image selection from GALLERY / PHOTOS of phone storage.)
-    // START
-    /**
-     * A method is used for image selection from GALLERY / PHOTOS of phone storage.
-     */
     private fun choosePhotoFromGallery() {
-        // TODO(Step 6 : Asking the permissions of Storage using DEXTER Library which we have added in gradle file.)
         // START
         Dexter.withActivity(this)
             .withPermissions(
@@ -148,13 +138,7 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
             .check()
         // END
     }
-    // END
 
-    // TODO(Step 7: Creating a function which is used to show the alert dialog when the permissions are denied and need to allow it from settings app info.)
-    // START
-    /**
-     * A function used to show the alert dialog when the permissions are denied and need to allow it from settings app info.
-     */
     private fun showRationalDialogForPermissions() {
         AlertDialog.Builder(this)
             .setMessage("It Looks like you have turned off permissions required for this feature. It can be enabled under Application Settings")

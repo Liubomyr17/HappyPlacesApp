@@ -7,16 +7,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!--START-->
     <style name="CustomNoActionBarTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
     </style>
 
-    <!--START-->
     <style name="CustomToolbarStyle">
         <item name="android:textColorPrimary">#FFFFFF</item>
         <item name="android:colorControlNormal">#FFFFFF</item>
     </style>
-    <!--END-->
-
 </resources>
